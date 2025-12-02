@@ -1,6 +1,10 @@
 [workspace]
 resolver = "2"
-members = ["2023/day-*", "2024/day-*", "2025/day-*"]
+members = [
+  # "2023/day-*", 
+  # "2024/day-*", 
+  "2025/day-*",
+]
 
 [workspace.dependencies]
 glam = "0.30.9"
