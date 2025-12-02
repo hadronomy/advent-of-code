@@ -576,6 +576,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "aoc2025-day-2"
+version = "0.1.0"
+dependencies = [
+ "chumsky",
+ "divan",
+ "glam",
+ "indicatif",
+ "itertools 0.14.0",
+ "miette",
+ "nom",
+ "nom_locate",
+ "rayon",
+ "rstest",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "ar_archive_writer"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
