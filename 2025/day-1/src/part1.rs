@@ -1,10 +1,5 @@
 use miette::*;
-use nom::{
-    character::complete::{self, line_ending, one_of},
-    multi::separated_list1,
-    sequence::pair,
-    IResult,
-};
+use chumsky::prelude::*;
 
 #[derive(Debug, Clone, Copy)]
 enum Instruction {
@@ -12,27 +7,31 @@ enum Instruction {
     Right(u32),
 }
 
-/// Parses a single line: "L68" or "R48"
-fn parse_instruction(input: &str) -> IResult<&str, Instruction> {
-    let (input, (dir, amount)) = pair(one_of("LR"), complete::u32)(input)?;
+/// Defines the parser using Chumsky combinators.
+///
+/// We specify the error type `extra::Err<Rich<'a, char>>` to get detailed diagnostics,
+/// although we just flatten them for the result here.
+fn parser<'a>() -> impl Parser<'a, &'a str, Vec<Instruction>, extra::Err<Rich<'a, char>>> {
+    let instruction = one_of("LR")
+        .then(text::int(10).from_str::<u32>().unwrapped())
+        .map(|(dir, amount)| match dir {
+            'L' => Instruction::Left(amount),
+            'R' => Instruction::Right(amount),
+            _ => unreachable!("one_of ensures only L or R are parsed"),
+        });
 
-    let instruction = match dir {
-        'L' => Instruction::Left(amount),
-        'R' => Instruction::Right(amount),
-        _ => unreachable!("nom one_of ensures only L or R"),
-    };
-
-    Ok((input, instruction))
-}
-
-/// Parses the entire input into a list of Instructions
-fn parse(input: &str) -> IResult<&str, Vec<Instruction>> {
-    separated_list1(line_ending, parse_instruction)(input)
+    instruction
+        .separated_by(text::newline())
+        .allow_trailing()
+        .collect()
 }
 
 #[tracing::instrument]
 pub fn process(input: &str) -> Result<String> {
-    let (_, instructions) = parse(input).map_err(|e| miette!("Parse failed: {}", e))?;
+    let instructions = parser()
+        .parse(input)
+        .into_result()
+        .map_err(|e| miette!("Parse failed with errors: {:?}", e))?;
 
     let start_position = 50;
     let modulus = 100;

@@ -14,8 +14,8 @@ tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 rayon = { workspace = true }
 indicatif = { workspace = true }
-cached = "0.54.0"
-rand = "0.8.5"
+cached = "0.56.0"
+rand = "0.9.2"
 
 [dev-dependencies]
 divan = { workspace = true }

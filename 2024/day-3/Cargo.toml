@@ -14,9 +14,9 @@ tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 rayon = { workspace = true }
 indicatif = { workspace = true }
-regex = "1.11.1"
-pest = { version = "2.7.14", features = ["miette-error"] }
-pest_derive = "2.7.14"
+regex = "1.12.2"
+pest = { version = "2.8.4", features = ["miette-error"] }
+pest_derive = "2.8.4"
 
 [dev-dependencies]
 divan = { workspace = true }

@@ -14,7 +14,7 @@ tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 rayon = { workspace = true }
 indicatif = { workspace = true }
-z3 = "0.12.1"
+z3 = "0.19.5"
 
 [dev-dependencies]
 divan = { workspace = true }

@@ -3,20 +3,21 @@ resolver = "2"
 members = ["2023/day-*", "2024/day-*", "2025/day-*"]
 
 [workspace.dependencies]
-glam = "0.29.2"
-itertools = "0.13.0"
-miette = { version = "7.4.0", features = ["fancy"] }
+glam = "0.30.9"
+itertools = "0.14.0"
+miette = { version = "7.6.0", features = ["fancy"] }
 nom = "7.1.3"
 nom_locate = "4.2.0"
-rstest = "0.23.0"
-tracing = "0.1.41"
-tracing-subscriber = "0.3.19"
-tracing-tracy = "0.11.3"
-tracy-client = "0.17.4"
-tracy-client-sys = "0.24.2"
-rayon = "1.10.0"
-indicatif = { version = "0.17.9", features = ["rayon"] }
-divan = "0.1.17"
+rstest = "0.26.1"
+tracing = "0.1.43"
+tracing-subscriber = "0.3.22"
+tracing-tracy = "0.11.4"
+tracy-client = "0.18.3"
+tracy-client-sys = "0.27.0"
+rayon = "1.11.0"
+indicatif = { version = "0.18.3", features = ["rayon"] }
+divan = "0.1.21"
+chumsky = "0.11.2"
 
 [profile.release]
 debug = 1

@@ -14,7 +14,7 @@ tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 rayon = { workspace = true }
 indicatif = { workspace = true }
-strum = { version = "0.26.3", features = ["derive", "strum_macros"] }
+strum = { version = "0.27.2", features = ["derive", "strum_macros"] }
 
 [dev-dependencies]
 divan = { workspace = true }
