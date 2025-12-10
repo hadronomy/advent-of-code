@@ -20,8 +20,14 @@ bitvec = "1.0.1"
 [dev-dependencies]
 divan = { workspace = true }
 rstest = { workspace = true }
+gungraun = "0.17.0"
 
 [[bench]]
 name = "2025-day-9-bench"
 path = "benches/benchmarks.rs"
+harness = false
+
+[[bench]]
+name = "2025-day-9-bench-valgrind"
+path = "benches/precise_benchmarks.rs"
 harness = false

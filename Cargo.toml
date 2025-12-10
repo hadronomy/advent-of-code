@@ -29,5 +29,9 @@ incremental = true
 opt-level = 3
 lto = true
 
+[profile.bench]
+debug = true
+strip = false
+
 [profile.dev.package.backtrace]
 opt-level = 3
