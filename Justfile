@@ -35,6 +35,14 @@ create year day:
         exit 1; \
     fi
 
+samply year day part:
+    cargo build -p aoc{{year}}-day-{{day}} --bin part{{part}}
+    @if [ -f /proc/sys/kernel/perf_event_paranoid ] && [ "$(cat /proc/sys/kernel/perf_event_paranoid)" -gt 1 ]; then \
+        echo "Perf events are restricted. Asking for sudo to set /proc/sys/kernel/perf_event_paranoid to 1..."; \
+        echo '1' | sudo tee /proc/sys/kernel/perf_event_paranoid; \
+    fi
+    samply record target/debug/part{{part}}
+
 [private]
 cleanup year day:
     @rm -rf {{source_directory()}}/{{year}}/day-{{day}}
