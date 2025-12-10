@@ -1,0 +1,37 @@
+[package]
+name = "aoc2025-day-10"
+authors = ["Pablo Hernandez (@Hadronomy)"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+glam = { workspace = true }
+itertools = { workspace = true }
+miette = { workspace = true, features = ["fancy"] }
+nom = { workspace = true }
+nom_locate = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+rayon = { workspace = true }
+indicatif = { workspace = true }
+chumsky = { workspace = true }
+bitvec = "1.0.1"
+nalgebra = "0.33.2"
+num = "0.4"
+heapless = "0.9.1"
+num-integer = "0.1.46"
+
+[dev-dependencies]
+divan = { workspace = true }
+rstest = { workspace = true }
+gungraun = "0.17.0"
+
+[[bench]]
+name = "2025-day-10-bench"
+path = "benches/benchmarks.rs"
+harness = false
+
+[[bench]]
+name = "2025-day-10-bench-valgrind"
+path = "benches/precise_benchmarks.rs"
+harness = false
