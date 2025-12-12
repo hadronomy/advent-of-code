@@ -3,10 +3,6 @@ use miette::{miette, Result};
 use nalgebra::{DMatrix, DVector};
 use rayon::prelude::*;
 
-// -----------------------------------------------------------------------------
-// Constants & Configuration
-// -----------------------------------------------------------------------------
-
 /// Numerical epsilon for comparing floating point values to zero.
 const EPSILON: f64 = 1e-9;
 
@@ -19,10 +15,6 @@ const INTEGRALITY_TOLERANCE: f64 = 1e-3;
 
 /// Tolerance for pruning branches in B&B.
 const PRUNING_TOLERANCE: f64 = 1e-5;
-
-// -----------------------------------------------------------------------------
-// Domain Models
-// -----------------------------------------------------------------------------
 
 #[derive(Clone, Debug)]
 pub struct LinearSystem {
@@ -38,10 +30,6 @@ pub struct Solution {
     pub x: DVector<f64>,
     pub cost: f64,
 }
-
-// -----------------------------------------------------------------------------
-// Simplex Solver Core
-// -----------------------------------------------------------------------------
 
 mod simplex {
     use super::*;
@@ -280,10 +268,6 @@ mod simplex {
     }
 }
 
-// -----------------------------------------------------------------------------
-// Mixed Integer Linear Programming (Branch & Bound)
-// -----------------------------------------------------------------------------
-
 mod milp {
     use super::*;
 
@@ -296,7 +280,6 @@ mod milp {
         let n = sys.a.ncols();
         let mut best_int_cost = f64::MAX;
 
-        // Explicitly annotate type for the compiler
         let mut best_sol: Option<Vec<usize>> = None;
 
         let mut stack = vec![BranchNode {
@@ -450,10 +433,6 @@ mod milp {
         true
     }
 }
-
-// -----------------------------------------------------------------------------
-// Parsing & Entry Point
-// -----------------------------------------------------------------------------
 
 fn parser<'a>() -> impl Parser<'a, &'a str, Vec<LinearSystem>, extra::Err<Rich<'a, char>>> {
     let hspace = one_of(" \t").repeated();
