@@ -1,0 +1,27 @@
+[package]
+name = "aoc2025-day-12"
+authors = ["Pablo Hernandez (@Hadronomy)"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+glam = { workspace = true }
+itertools = { workspace = true }
+miette = { workspace = true, features = ["fancy"] }
+nom = { workspace = true }
+nom_locate = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+rayon = { workspace = true }
+indicatif = { workspace = true }
+chumsky = { workspace = true }
+bitvec = "1.0.1"
+
+[dev-dependencies]
+divan = { workspace = true }
+rstest = { workspace = true }
+
+[[bench]]
+name = "2025-day-12-bench"
+path = "benches/benchmarks.rs"
+harness = false
